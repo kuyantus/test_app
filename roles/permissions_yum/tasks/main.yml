@@ -1,0 +1,7 @@
+- name: Set permissions for base directory (CentOS)
+  file:
+       path: '/srv/simple-python-app'
+       owner: 'nginx'
+       group: 'nginx'
+       state: directory
+       recurse: yes

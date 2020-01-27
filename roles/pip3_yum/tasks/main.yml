@@ -1,0 +1,18 @@
+#- pip:
+#    name:
+#        - psycopg2-binary
+#        - uwsgi
+#        - flask
+#        - flask_sqlalchemy
+#        - flask_migrate
+#    executable: pip
+#
+- pip:
+    name:
+        - psycopg2-binary
+        - uwsgi
+        - flask
+        - flask_sqlalchemy
+        - flask_migrate
+    executable: pip3
+

@@ -1,0 +1,41 @@
+- name: add postgres apt_key
+  apt_key:
+    url: https://www.postgresql.org/media/keys/ACCC4CF8.asc
+    state: present
+  become: true
+- name: create var
+  command: bash -c "echo \"deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -cs)-pgdg main\" "
+  register: repo_line
+- name: Set postgres REPO
+  apt_repository:
+    repo: "{{ repo_line.stdout }}"
+    state: present
+  become: true
+- name: Install postgres and lib
+  apt:
+    name: postgresql-11,libpq-dev
+    update_cache: yes
+  become: true
+
+- name: create postgresql db
+  postgresql_db:
+        name: "app"
+        state: present
+  become: true
+  become_user: postgres
+
+- name: Create postgres user for app db
+  become: yes
+  become_user: postgres
+  postgresql_user:
+      name: "worker"
+      password: "worker"
+
+- name: give access to app db to worker user
+  become: yes
+  become_user: postgres
+  postgresql_privs:
+      db: app
+      role: testuser
+      objs: ALL_IN_SCHEMA
+      privs: SELECT,INSERT,UPDATE,DELETE

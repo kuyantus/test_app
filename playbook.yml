@@ -1,0 +1,37 @@
+---
+- name: Install and run web python app
+  hosts: all
+  become: yes
+  
+- hosts: all
+  tasks:
+     - group_by: key={{ ansible_os_family }}
+ 
+- hosts: Debian
+  gather_facts: False
+  become: yes
+  roles:
+   - install_deb
+   - pip3
+   - install_postgres_deb
+   - clone_git
+   - venv
+   - permissions_deb
+   - copy_wsgi_deb
+   - copy_app_ini_deb
+   - start_service
+
+- hosts: RedHat
+  gather_facts: False
+  become: yes
+  roles:
+   - install_yum
+   - firewalld
+   - install_postgres_yum
+   - pip3_yum
+   - clone_git
+   - venv_yum
+   - permissions_yum
+   - copy_wsgi_yum
+   - copy_app_ini_yum
+   - start_service

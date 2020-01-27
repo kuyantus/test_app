@@ -1,0 +1,14 @@
+- name: enable simple-python-app service
+  systemd:
+    name: simple-python-app
+    enabled: yes
+
+- name: Make sure a service is running
+  systemd:
+    state: started
+    name: simple-python-app
+
+- name: reload service nginx
+  systemd:
+    name: nginx
+    state: reloaded

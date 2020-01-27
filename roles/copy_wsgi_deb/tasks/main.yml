@@ -1,0 +1,7 @@
+- name: copy wsgi.py for Debian/Ubuntu
+  copy:
+       src: ./files/wsgi.py
+       dest: /srv/simple-python-app/
+       owner: www-data
+       group: www-data
+       mode: u=rw,g=r,o=r

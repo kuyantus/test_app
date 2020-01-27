@@ -1,0 +1,5 @@
+- name: Create a virtual environment
+  command: "python3 -m venv /srv/simple-python-app"
+
+- name: Install requirements.txt
+  command: "'/srv/simple-python-app/bin/pip' install -r '/srv/simple-python-app/requirements.txt'"

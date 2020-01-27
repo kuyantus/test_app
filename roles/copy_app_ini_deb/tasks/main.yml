@@ -1,0 +1,26 @@
+- name: copy app.ini for Debian/Ubuntu
+  copy:
+       src: ./files/app.ini
+       dest: /srv/simple-python-app/
+       owner: www-data
+       group: www-data
+       mode: u=rw,g=r,o=r
+
+
+- name: copy wsgi.py for Debian/Ubuntu
+  copy:
+       src: ./files/simple-python-app.service
+       dest: /etc/systemd/system/simple-python-app.service
+       owner: root
+       group: root
+       mode: u=rw,g=r,o=r
+
+
+- name: copy nginx site config for Debian/Ubuntu
+  copy:
+       src: ./files/simple-python-app
+       dest: /etc/nginx/sites-enabled/default
+       owner: www-data
+       group: www-data
+       mode: u=rw,g=r,o=r
+

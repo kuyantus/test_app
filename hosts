@@ -1,0 +1,14 @@
+[centos]
+centos_client ansible_host=192.168.2.28
+
+[ubuntu]
+ubuntu_client ansible_host=192.168.2.29
+
+[centos:vars]
+ansible_user=root
+ansible_ssh_private_key_file=/root/.ssh/id_rsa
+
+[ubuntu:vars]
+ansible_user=kuyantus
+ansible_ssh_private_key_file=/root/.ssh/id_rsa
+

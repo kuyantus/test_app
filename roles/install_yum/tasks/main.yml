@@ -1,0 +1,22 @@
+- name: Install EPEL (CentOS)
+  yum:
+     name: epel-release
+     state: present
+     update_cache: yes
+
+- name: Install packages (CentOS)
+  yum:
+     name: python3,python3-devel,python-setuptools,uwsgi,uwsgi-plugin-python36,uwsgi-logger-file,nginx,postgresql-devel,git,wget,gcc
+     state: present
+     update_cache: yes
+
+- name: enable nginx
+  systemd:
+    name: nginx
+    enabled: yes
+
+- name: start nginx
+  systemd:
+    state: started
+    name: nginx
+

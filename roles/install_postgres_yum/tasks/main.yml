@@ -1,0 +1,4 @@
+- name: install postgres CentOS
+  shell: |
+        rpm -Uvh https://yum.postgresql.org/11/redhat/rhel-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+        yum install -y postgresql11-contrib postgresql11-devel postgresql11-server

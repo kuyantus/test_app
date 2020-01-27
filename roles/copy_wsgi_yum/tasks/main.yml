@@ -1,0 +1,7 @@
+- name: copy wsgi.py for CentOS
+  copy:
+       src: ./files/wsgi.py
+       dest: /srv/simple-python-app/
+       owner: nginx
+       group: nginx
+       mode: u=rw,g=r,o=r

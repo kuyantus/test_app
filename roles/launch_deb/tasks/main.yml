@@ -1,0 +1,31 @@
+- name: export flask
+  shell: export FLASK_APP=app.py
+  args:
+    chdir: /srv/simple-python-app/
+
+- name: export postgresql_url
+  shell: export POSTGRESQL_URL=postgresql://worker:worker@localhost/app
+  args:
+    chdir: /srv/simple-python-app/
+
+- name: run app
+  shell: nohup python3 app.py
+
+  args:
+    chdir: /srv/simple-python-app/
+
+
+#- name: cd
+#  command: chdir=/srv/simple-python-app export FLASK_APP=app.py
+
+#- name: export flask
+#  command: "export FLASK_APP=app.py"
+
+#- name: export postgresql_url
+#  command: chdir=/srv/simple-python-app export POSTGRESQL_URL=postgresql://worker:worker@localhost/app
+
+#- name: flask db upgrade
+#  command: "flask db upgrade"
+
+#- name: launch app
+#  command: chdir=/srv/simple-python-app python3 app.py

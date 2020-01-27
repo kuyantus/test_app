@@ -1,0 +1,8 @@
+- name: Set permissions for base directory (Debian/Ubuntu)
+  file:
+       path: '/srv/simple-python-app'
+       owner: 'www-data'
+       group: 'www-data'
+       state: directory
+       recurse: yes
+

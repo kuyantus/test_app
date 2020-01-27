@@ -3,3 +3,8 @@
 
 - name: Install requirements.txt
   command: "'/srv/simple-python-app/bin/pip' install -r '/srv/simple-python-app/requirements.txt'"
+
+- name: flask db upgrade
+  shell: flask db upgrade
+  args:
+    chdir: /srv/simple-python-app/
